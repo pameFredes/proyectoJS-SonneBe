@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Online | SONNE BE</title>
+    <link rel="shorcut icon" href="./img/logoFavicon.ico" type="image/x-ico">
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- custom js file link  -->
+    <script src="js/script.js" defer></script>
+
+</head>
+<body>
+
+<!-- header section starts  -->
+
+<header class="header">
+
+    <a href="index.html" class="logo"> SONNE BE </a>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">INICIO</a></li>
+            <li><a href="./pages/products.html">PRODUCTOS</a></li>
+            <li><a href="./pages/contact.html">CONTACTO</a></li>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="icons">
+        <a href="./pages/cart.html" class="fas fa-shopping-cart"><span id="cartCounter">0</span></a>
+    </div>
+
+    
+
+</header>
+
+<!-- header section ends -->
+
+<!-- home section starts      -->
+
+<section class="home">
+
+    <div class="slide active" style="background: url(./img/romaBlue.jpeg) no-repeat;">
+        <div class="content">
+            <span>Gafas cancheras</span>
+            <h3>A precios increíbles</h3>
+            <a href="./pages/products.html" class="btn">Elegí las tuyas!</a>
+        </div>
+    </div>
+
+    <div class="slide" style="background: url(./img/chica2.jpeg) no-repeat;">
+        <div class="content">
+            <span>protect your eyes</span>
+            <h3>upto 50% off</h3>
+            <a href="#" class="btn">shop now</a>
+        </div>
+    </div>
+
+    <div class="slide" style="background: url(./img/chica3.jpeg) no-repeat;">
+        <div class="content">
+            <span>protect your eyes</span>
+            <h3>upto 50% off</h3>
+            <a href="#" class="btn">shop now</a>
+        </div>
+    </div>
+
+    <div id="next-slide" onclick="next()" class="fas fa-angle-right"></div>
+    <div id="prev-slide" onclick="prev()" class="fas fa-angle-left"></div>
+
+</section>
+
+<!-- home section ends     -->
+
+<!-- banner section starts  -->
+
+<section class="banner">
+
+    <div class="box">
+        <img src="./img/chica1.jpeg" alt="">
+        <div class="content">
+            <span>Aprovechá el descuento!</span>
+            <h3>20% off</h3>
+            <a href="./pages/products.html" class="btn">Comprá ahora!</a>
+        </div>
+    </div>
+
+    <div class="box">
+        <img src="./img/chica2.jpeg" alt="">
+        <div class="content">
+            <span>Aprovechá el descuento!</span>
+            <h3>20% off</h3>
+            <a href="./pages/products.html" class="btn">Comprá ahora!</a>
+        </div>
+    </div>
+
+    <div class="box">
+        <img src="img/chica3.jpeg" alt="">
+        <div class="content">
+            <span>Aprovechá el descuento!</span>
+            <h3>20% off</h3>
+            <a href="#" class="btn">Comprá ahora!</a>
+        </div>
+    </div>
+
+</section>
+
+<!-- banner section ends -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="index.html"> <i class="fas fa-angle-right"></i> INICIO</a>
+            <a href="./pages/products.html"> <i class="fas fa-angle-right"></i> PRODUCTOS</a>
+            <a href="./pages/contact.html"> <i class="fas fa-angle-right"></i> CONTACTO</a>
+            <a href="./pages/cart.html"> <i class="fas fa-angle-right"></i> BOLSA DE COMPRAS</a>
+        </div>
+
+        <!-- <div class="box">
+            <h3>extra links</h3>
+            <a href="#"> <i class="fas fa-angle-right"></i> my account </a>
+            <a href="#"> <i class="fas fa-angle-right"></i> my order </a>
+            <a href="#"> <i class="fas fa-angle-right"></i> my wishlist </a>
+            <a href="#"> <i class="fas fa-angle-right"></i> terms of use </a>
+            <a href="#"> <i class="fas fa-angle-right"></i> privacy policy </a>
+        </div> -->
+
+        <div class="box">
+            <h3>follow us</h3>
+            <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
+            <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+            <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
+        </div>
+
+        <div class="box">
+            <h3>newsletter</h3>
+            <p>subscribe for latest updates</p>
+            <form action="">
+                <input type="email" placeholder="enter your emal">
+                <input type="submit" value="subscribe" class="btn">
+            </form>
+        </div>
+
+    </div>
+
+    <div class="credit"> created by <span>Pamela Fredes</span> | all rights reserved </div>
+
+</section>
+
+<!-- footer section ends -->
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+
+
+</body>
+</html>
