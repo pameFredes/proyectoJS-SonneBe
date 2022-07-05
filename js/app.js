@@ -1,9 +1,6 @@
 
-//const cartCounter= document.getElementById('cartCounter');
-
-
-let carrito = [];
-
+const carrito = (localStorage.getItem('carrito')) ? JSON.parse(localStorage.getItem('carrito')) : []
+updateCart()
 //CONTENEDOR DE PRODUCTOS GENERAL:
 
 const container = document.getElementById('productContainer');
@@ -18,7 +15,7 @@ function addListProducts() {
         <div class="image">
             <div class="icons">
             <a href="javascript:void(0); showModal(${ product.id })" id= "viewProduct" class="fas fa-eye"></a>
-            <a href="javascript:void(0); addToCart(${ product.id })" id= "addCart${product.id} " class="fas fa-shopping-cart"></a>
+            <a href="javascript:void(0); addToCart(${ product.id })" id= "addBotton${product.id} " class="fas fa-shopping-cart"></a>
             </div>                
             <img src="${ product.image }" alt="Imagen del producto">
         </div>
@@ -36,6 +33,7 @@ function addListProducts() {
         `;
 
         container.appendChild(div);
+    
     })
 
 }
@@ -43,30 +41,38 @@ addListProducts()
 // Agregar producto al Carrito
 
 function addToCart(id) {
-        console.log(`Agregar producto al carrito ${id}`);
-        let inToCart = carrito.find(element => element.id === id)
+
+        let inToCart = carrito.find(element => element.id == id)
+        
         if(inToCart){
-            inToCart.cantidad = inToCart.cantidad + 1
-            document.getElementById(`cantidad${inToCart.id}`).innerHTML = `<span id= "cantidad${inToCart.id}" >Cantidad: ${inToCart.cantidad} </span>`
-            updateCart()
+            inToCart.cantidad += 1
+            // updateCart()
         }else{
-            const producAdded= products[id]
-            producAdded.cantidad = 1
-            carrito.push(producAdded)
-            updateCart()
-            showCart(producAdded)
+            let productAdded= products.find(element => element.id === id)
+            productAdded.cantidad = 1
+            carrito.push(productAdded)
+            // updateCart()
+            // showCart(productAdded)
         }
+
+        updateCart()
+
        
-    localStorage.setItem('carrito', JSON.stringify(carriyo))
+    localStorage.setItem('carrito', JSON.stringify(carrito))
+    toastr.success('Articulo agregado')
 }
-addToCart()
+
+// addToCart()
 //Contenedor carrito:
 
-const containerCart = document.getElementById('containerCart');
+// const containerCart = document.getElementById('containerCart');
+
+// JSON.parse(localStorage.getItem('carrito'))
+
 
 function showCart(producAdded){
-    const div = document.createElement('div')
-    div.className = 'box';
+    let div = document.createElement('div')
+    div.classList.add('box');
         div.innerHTML = `
             <i class="fas fa-times" id= "eliminar${producAdded.id}" ></i>
             <img src="${ producAdded.image }" alt="Imagen del producto">
@@ -79,22 +85,23 @@ function showCart(producAdded){
                 <div class="price"> $${ producAdded.price }  <span> $${ producAdded.oldPrice } </span> </div>
                 <h1 class="title">Revisa el total de tu compra:</h1>
                 <div id= "cartContainer" class="cart-total">
-                    <h3>Subtotal : <span>$100.00</span></h3>
-                    <h3>Total : <span id= "totalPrice" >$100.00</span></h3>
+                    <h3>Subtotal : <span>$${ product.price }</span></h3>
+                    <h3>Total : <span id= "totalPrice" >$${producAdded.id}</span></h3>
                     <a href="#" class="btn">Proceder al pago</a>
                 </div>
             </div>`
 
         containerCart.appendChild(div);  
+        
         let btnEliminar= document.getElementById(`eliminar${producAdded.id}`)
         btnEliminar.addEventListener('click', ()=> {
             if(producAdded.cantidad == 1){
                 btnEliminar.parentElement.remove()
-                carrito= carrito.filter(item = item.id !== producAdded.id)
+                carrito= carrito.filter(item => item.id !== producAdded.id)
                 updateCart()
             }else{
                 producAdded.cantidad = producAdded.cantidad - 1
-                document.getElementById(`cantidad${inToCart.id}`).innerHTML = `<span id= "cantidad${inToCart.id}" >Cantidad: ${inToCart.cantidad} </span>`
+                document.getElementById(`cantidad${producAdded.id}`).innerHTML = `<span id= "cantidad${producAdded.id}">Cantidad: ${producAdded.cantidad} </span>`
                 updateCart()  
             }
            
@@ -103,8 +110,7 @@ function showCart(producAdded){
 }
 
 function updateCart(){
-    cartCounter.innerText = carrito.reduce( (acc, el) => acc + el.cantidad, 0)
-    totalPrice.innerText = carrito.reduce ( (acc, el) => acc + (el.price * el.cantidad), 0)
+    document.getElementById(`cartCounter`).innerHTML = carrito.reduce( (acc, el) => acc + el.cantidad, 0);
 }
 
 
