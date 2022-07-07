@@ -1,6 +1,7 @@
 
-const carrito = (localStorage.getItem('carrito')) ? JSON.parse(localStorage.getItem('carrito')) : []
+let carrito = (localStorage.getItem('carrito')) ? JSON.parse(localStorage.getItem('carrito')) : []
 updateCart()
+
 //CONTENEDOR DE PRODUCTOS GENERAL:
 
 const container = document.getElementById('productContainer');
@@ -31,14 +32,12 @@ function addListProducts() {
             <div class="price">$${ product.price } <span>$${ product.oldPrice }</span></div>
         </div>
         `;
-
         container.appendChild(div);
-    
     })
-
 }
 addListProducts()
-// Agregar producto al Carrito
+
+// Agregar producto al Carrito:
 
 function addToCart(id) {
 
@@ -57,63 +56,14 @@ function addToCart(id) {
 
         updateCart()
 
-       
     localStorage.setItem('carrito', JSON.stringify(carrito))
     toastr.success('Articulo agregado')
 }
 
-// addToCart()
-//Contenedor carrito:
-
-// const containerCart = document.getElementById('containerCart');
-
-// JSON.parse(localStorage.getItem('carrito'))
-
-
-function showCart(producAdded){
-    let div = document.createElement('div')
-    div.classList.add('box');
-        div.innerHTML = `
-            <i class="fas fa-times" id= "eliminar${producAdded.id}" ></i>
-            <img src="${ producAdded.image }" alt="Imagen del producto">
-            <div class="content">
-                <h3>${ producAdded.name }</h3>
-                <form action="">
-                    <span id= "cantidad${producAdded.id}" >Cantidad: ${producAdded.cantidad} </span>
-                    <input type="number" name="" value="1" id="amount">
-                </form>
-                <div class="price"> $${ producAdded.price }  <span> $${ producAdded.oldPrice } </span> </div>
-                <h1 class="title">Revisa el total de tu compra:</h1>
-                <div id= "cartContainer" class="cart-total">
-                    <h3>Subtotal : <span>$${ product.price }</span></h3>
-                    <h3>Total : <span id= "totalPrice" >$${producAdded.id}</span></h3>
-                    <a href="#" class="btn">Proceder al pago</a>
-                </div>
-            </div>`
-
-        containerCart.appendChild(div);  
-        
-        let btnEliminar= document.getElementById(`eliminar${producAdded.id}`)
-        btnEliminar.addEventListener('click', ()=> {
-            if(producAdded.cantidad == 1){
-                btnEliminar.parentElement.remove()
-                carrito= carrito.filter(item => item.id !== producAdded.id)
-                updateCart()
-            }else{
-                producAdded.cantidad = producAdded.cantidad - 1
-                document.getElementById(`cantidad${producAdded.id}`).innerHTML = `<span id= "cantidad${producAdded.id}">Cantidad: ${producAdded.cantidad} </span>`
-                updateCart()  
-            }
-           
-
-        })
-}
-
+// Función para actualizar ícono carrito:
 function updateCart(){
     document.getElementById(`cartCounter`).innerHTML = carrito.reduce( (acc, el) => acc + el.cantidad, 0);
 }
-
-
 
 // Mostrar info del Producto
 
