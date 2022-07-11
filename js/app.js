@@ -5,9 +5,11 @@ updateCart()
 //CONTENEDOR DE PRODUCTOS GENERAL:
 
 const container = document.getElementById('productContainer');
+const url= "../js/products.json"
 
-function addListProducts() {
-
+const addListProducts= async ()=>{
+    const response = await fetch(url)
+    const productos= await response.json()
     products.forEach(product => {
         
         const div = document.createElement('div')
@@ -34,8 +36,8 @@ function addListProducts() {
         `;
         container.appendChild(div);
     })
-}
-addListProducts()
+} 
+addListProducts();
 
 // Agregar producto al Carrito:
 
