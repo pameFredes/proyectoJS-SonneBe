@@ -1,4 +1,3 @@
-
 let carrito = (localStorage.getItem('carrito')) ? JSON.parse(localStorage.getItem('carrito')) : []
 updateCart()
 
@@ -47,13 +46,10 @@ function addToCart(id) {
         
         if(inToCart){
             inToCart.cantidad += 1
-            // updateCart()
         }else{
             let productAdded= products.find(element => element.id === id)
             productAdded.cantidad = 1
             carrito.push(productAdded)
-            // updateCart()
-            // showCart(productAdded)
         }
 
         updateCart()
@@ -79,7 +75,6 @@ function showModal(id) {
         <div class="image">
         <img src="${ product.image }" alt="Imagen del producto" class= "imageModal">
         </div>
-
         <div class="content">
             <h3>${ product.name }</h3>
             <div class="stars">

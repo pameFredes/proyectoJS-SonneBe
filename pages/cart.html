@@ -46,7 +46,7 @@
 <!-- header section  -->
 
 <section class="heading">
-    <h1>shopping cart</h1>
+    <h1>Carrito de compras</h1>
     <p> <a href="../index.html">Inicio</a> >> Carrito de compras </p>
 </section>
 
@@ -61,11 +61,16 @@
         <!-- div class box desde js -->
     </div>
 
-    <h1 class="title">Revisa el total de tu compra:</h1>
+    
     <div id= "cartContainer" class="cart-total">
+        
+        <h1 class="title">Revisa el total de tu compra:</h1>
         <h3>Subtotal : <span id="subtotalCart"></span></h3>
         <h3>Total : <span id= "totalPrice" >$${producAdded.id}</span></h3>
-        <a href="#" class="btn">Proceder al pago</a>
+        <a href="javascript:void(0); goToPay()" class="btn">Proceder al pago</a>
+    </div>
+    <div id="notProducts" class="cart-total">
+        <h1 class="title">No tienes productos en tu carrito de compras</h1>
     </div>
 
 </section>
