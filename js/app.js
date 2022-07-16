@@ -1,7 +1,6 @@
 let carrito = (localStorage.getItem('carrito')) ? JSON.parse(localStorage.getItem('carrito')) : []
 updateCart()
 
-//CONTENEDOR DE PRODUCTOS GENERAL:
 
 const container = document.getElementById('productContainer');
 const url= "../js/products.json"
@@ -38,8 +37,6 @@ const addListProducts= async ()=>{
 } 
 addListProducts();
 
-// Agregar producto al Carrito:
-
 function addToCart(id) {
 
         let inToCart = carrito.find(element => element.id == id)
@@ -58,16 +55,12 @@ function addToCart(id) {
     toastr.success('Articulo agregado')
 }
 
-// Función para actualizar ícono carrito:
 function updateCart(){
     document.getElementById(`cartCounter`).innerHTML = carrito.reduce( (acc, el) => acc + el.cantidad, 0);
 }
 
-// Mostrar info del Producto
 
-function showModal(id) {
-    console.log(`Mostrar info del producto ${id}`);
-    
+function showModal(id) {    
     const product= products[id]
   
     Swal.fire({

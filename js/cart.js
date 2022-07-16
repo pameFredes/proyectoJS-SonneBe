@@ -1,4 +1,3 @@
-// Get info del localStorage
 const containerCart = document.getElementById('containerCart');
 const subtotalCart = document.getElementById('subtotalCart')
 const totalPrice = document.getElementById('totalPrice') 
@@ -48,10 +47,8 @@ function changeQuantity(idInput){
 function updateCart(){
     subtotalCart.innerHTML = ""
     totalPrice.innerHTML = ""
-    //1. Total a pagar
     const totalDesc = carrito.reduce( (acc, el) => acc + (el.cantidad * el.oldPrice), 0);
     const total = carrito.reduce( (acc, el) => acc + (el.cantidad * el.price), 0);
-    //2. Obtener los elementos del DOM a los cuales asignar los totales.
     subtotalCart.innerText = `$${totalDesc.toFixed(2)}`;
     totalPrice.innerText= `$${total.toFixed(2)}`;
 
@@ -65,7 +62,6 @@ function updateCart(){
     }
 }
 
-
 function deleteCart(event) {
     const id = event.target.id.split('-')[1]
     const el = document.getElementById(`product-${id}`)
@@ -76,7 +72,6 @@ function deleteCart(event) {
 
     toastr.error('Producto removido del carrito de compras')
 }
-
 
 function updateProductCart() {
     localStorage.setItem('carrito', JSON.stringify(carrito))
@@ -96,11 +91,11 @@ function goToPay() {
     msg += `*Total a pagar:* ${ totalPrice.innerText }`
     var win = window.open(`https://wa.me/+542616179981?text=${msg}`, '_blank');
     win.focus();
-
-    // Limpiar todo.
+    clearCarrito()
 }
-/*
-function cleanCart() {
-    // 1. Eliminar arreglo carrito
-    // 2. llamar a funcion udateCart()
-}*/
+
+function clearCarrito(){
+   localStorage.clear();
+   location. reload()
+   
+}
